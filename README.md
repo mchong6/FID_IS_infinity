@@ -7,7 +7,7 @@ $ pip install -r requirements.txt
 ```
 
 ## How to use
-First, generate the inception statistics for the groundtruth dataset to save time for future calculations. To do so, edit the dataloader in inception_utils.py to how you preprocess your data for your generator. Then run
+First, generate the inception statistics for the groundtruth dataset to save time for future calculations. To do so, edit the dataloader in score_infinty.py to how you preprocess your data for your generator. Then run
 ```bash
 $ python score_infinity.py --path path_to_dataset --out_path output_statistics.npz
 ```
@@ -38,12 +38,10 @@ z = sampler.draw(10) # Generates [10, 128] vector
 sampler = randn_sampler(128, True, use_cache=True)
 z = sampler.draw(10) # Generates [10, 128] vector
 ```
-Take a look at the comments in the utils.py to understand the arguments it take. 
+Take a look at the comments in the code to understand the arguments it take. 
 
 ## Citation
 If you use this code or ideas from our paper, please cite our paper:
-
-
 
 ## Acknowledgments
 This code borrows heavily from [BigGAN-PyTorch](https://github.com/ajbrock/BigGAN-PyTorch) and [pytorch-fid](https://github.com/mseitzer/pytorch-fid).
