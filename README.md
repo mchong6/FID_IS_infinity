@@ -34,14 +34,24 @@ from score_infinity import randn_sampler
 sampler = randn_sampler(128, True)
 z = sampler.draw(10) # Generates [10, 128] vector
 
-# For training
-sampler = randn_sampler(128, True, use_cache=True)
-z = sampler.draw(10) # Generates [10, 128] vector
+# For training we need a separate sampler for gen/disc
+# use_cache generates Sobol points and then randomly reorders them
+gen_sampler = randn_sampler(128, True, use_cache=True)
+disc_sampler = randn_sampler(128, True, use_cache=True)
 ```
 Take a look at the comments in the code to understand the arguments it take. 
 
 ## Citation
 If you use this code or ideas from our paper, please cite our paper:
+```
+@misc{chong2019effectively,
+    title={Effectively Unbiased FID and Inception Score and where to find them},
+    author={Min Jin Chong and David Forsyth},
+    year={2019},
+    eprint={1911.07023},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+```
 
 ## Acknowledgments
 This code borrows heavily from [BigGAN-PyTorch](https://github.com/ajbrock/BigGAN-PyTorch) and [pytorch-fid](https://github.com/mseitzer/pytorch-fid).
