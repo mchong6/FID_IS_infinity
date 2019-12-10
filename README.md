@@ -47,14 +47,12 @@ Take a look at the comments in the code to understand the arguments it take.
 ## Citation
 If you use this code or ideas from our paper, please cite our paper:
 ```
-@misc{chong2019effectively,
-    title={Effectively Unbiased FID and Inception Score and where to find them},
-    author={Min Jin Chong and David Forsyth},
-    year={2019},
-    eprint={1911.07023},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV}
-```
+@article{chong2019effectively,
+  title={Effectively Unbiased FID and Inception Score and where to find them},
+  author={Chong, Min Jin and Forsyth, David},
+  journal={arXiv preprint arXiv:1911.07023},
+  year={2019}
+}```
 
 ## Acknowledgments
 This code borrows heavily from [BigGAN-PyTorch](https://github.com/ajbrock/BigGAN-PyTorch) and [pytorch-fid](https://github.com/mseitzer/pytorch-fid).
