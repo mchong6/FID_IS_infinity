@@ -1,5 +1,8 @@
 # Effectively Unbiased FID and Inception Score and where to find them
-This is the PyTorch implementation of Effectively Unbiased FID and Inception Score and where to find them. Note that since the scores are calculated with PyTorch, they are not directly comparable with the numbers obtained from TensorFlow. 
+This is the PyTorch implementation of [Effectively Unbiased FID and Inception Score and where to find them](https://arxiv.org/abs/1911.07023). Note that since the scores are calculated with PyTorch, they are not directly comparable with the numbers obtained from TensorFlow. 
+
+**Abstract:**<br>
+*W Deep Generative Models have been getting a lot of attention in the past few years. However, evaluating how well they perform have thus far been lacking and inconsistent. We show that two commonly used evaluation metrics, Fréchet Inception Distance (FID) and Inception Score (IS), are biased. This bias depends on the number of images we use for calculating the score as well as the generators themselves, making objective comparisons between models difficult. This bias can cause model rankings to change and does not go away by fixing $N$. We thus introduce FID$_\infty$ and IS$_\infty$, two effectively unbiased metrics evaluated with ![equation](https://latex.codecogs.com/svg.latex?N%3D%5Cinfty), and show that we can estimate them via extrapolation. We further make use of Quasi-Monte Carlo integration as a form of variance reduction method to improve the estimates. ![equation](https://latex.codecogs.com/svg.latex?%5Coverline%7B%5Ctextrm%7BFID%7D%7D_%5Cinfty) and ![equation](https://latex.codecogs.com/svg.latex?%5Coverline%7B%5Ctextrm%7BIS%7D%7D_%5Cinfty) are simple drop-in replacements for FID and IS respectively, and allow us to have a fair comparison between different models. Lastly, we show that applying Quasi-Monte Carlo integration for GAN training leads to small improvements.*
 
 ## Dependency
 ```bash
