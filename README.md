@@ -52,7 +52,8 @@ If you use this code or ideas from our paper, please cite our paper:
   author={Chong, Min Jin and Forsyth, David},
   journal={arXiv preprint arXiv:1911.07023},
   year={2019}
-}```
+}
+```
 
 ## Acknowledgments
 This code borrows heavily from [BigGAN-PyTorch](https://github.com/ajbrock/BigGAN-PyTorch) and [pytorch-fid](https://github.com/mseitzer/pytorch-fid).
