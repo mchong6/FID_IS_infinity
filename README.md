@@ -12,8 +12,25 @@ First, generate the inception statistics for the groundtruth dataset to save tim
 $ python score_infinity.py --path path_to_dataset --out_path output_statistics.npz
 ```
 
-### Evaluating FID infinity and IS infinity
-To evaluate IS infinity or FID infinity from your evaluation script, add this following to your script
+### Evaluating FID infinity and IS infinity given a fake dataset
+To evaluate IS infinity or FID infinity given a pre-generated fake dataset, add this following to your script
+
+```python
+from score_infinity import calculate_FID_infinity_path, calculate_IS_infinity_path
+
+FID_infinity = calculate_FID_infinity_path('output_statistics.npz', fake_path, batch_size)
+IS_infinity = calculate_IS_infinity_path(fake_path, batch_size)
+
+```
+where fake_path is the path to the folder containing your generated images. Alternatively, you can skip step 1 which precomputes output_statistics.npz and instead call
+```python
+FID_infinity = calculate_FID_infinity_path(real_path, fake_path, batch_size)
+
+```
+which will recompute the activations for the real dataset every single call.
+
+### Evaluating FID infinity and IS infinity given a generator
+To evaluate IS infinity or FID infinity given a generator, add this following to your script
 
 ```python
 from score_infinity import calculate_FID_infinity, calculate_IS_infinity
