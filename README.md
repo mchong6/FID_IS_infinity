@@ -1,5 +1,8 @@
 # Effectively Unbiased FID and Inception Score and where to find them
-This is the PyTorch implementation of Effectively Unbiased FID and Inception Score and where to find them. Note that since the scores are calculated with PyTorch, they are not directly comparable with the numbers obtained from TensorFlow. 
+This is the PyTorch implementation of [Effectively Unbiased FID and Inception Score and where to find them](https://arxiv.org/abs/1911.07023). Note that since the scores are calculated with PyTorch, they are not directly comparable with the numbers obtained from TensorFlow. 
+
+**Abstract:**<br>
+*Deep Generative Models have been getting a lot of attention in the past few years. However, evaluating how well they perform have thus far been lacking and inconsistent. We show that two commonly used evaluation metrics, Fréchet Inception Distance (FID) and Inception Score (IS), are biased. This bias depends on the number of images we use for calculating the score as well as the generators themselves, making objective comparisons between models difficult. This bias can cause model rankings to change and does not go away by fixing ![equation](https://latex.codecogs.com/svg.latex?N). We thus introduce ![equation](https://latex.codecogs.com/svg.latex?%24FID_%5Cinfty%24) and ![equation](https://latex.codecogs.com/svg.latex?%24IS_%5Cinfty%24), two effectively unbiased metrics evaluated with ![equation](https://latex.codecogs.com/svg.latex?N%3D%5Cinfty), and show that we can estimate them via extrapolation. We further make use of Quasi-Monte Carlo integration as a form of variance reduction method to improve the estimates. ![equation](https://latex.codecogs.com/svg.latex?%5Coverline%7B%5Ctextrm%7BFID%7D%7D_%5Cinfty) and ![equation](https://latex.codecogs.com/svg.latex?%5Coverline%7B%5Ctextrm%7BIS%7D%7D_%5Cinfty) are simple drop-in replacements for FID and IS respectively, and allow us to have a fair comparison between different models. Lastly, we show that applying Quasi-Monte Carlo integration for GAN training leads to small improvements.*
 
 ## Dependency
 ```bash
@@ -51,14 +54,23 @@ from score_infinity import randn_sampler
 sampler = randn_sampler(128, True)
 z = sampler.draw(10) # Generates [10, 128] vector
 
-# For training
-sampler = randn_sampler(128, True, use_cache=True)
-z = sampler.draw(10) # Generates [10, 128] vector
+# For training we need a separate sampler for gen/disc
+# use_cache generates Sobol points and then randomly reorders them
+gen_sampler = randn_sampler(128, True, use_cache=True)
+disc_sampler = randn_sampler(128, True, use_cache=True)
 ```
 Take a look at the comments in the code to understand the arguments it take. 
 
 ## Citation
 If you use this code or ideas from our paper, please cite our paper:
+```
+@article{chong2019effectively,
+  title={Effectively Unbiased FID and Inception Score and where to find them},
+  author={Chong, Min Jin and Forsyth, David},
+  journal={arXiv preprint arXiv:1911.07023},
+  year={2019}
+}
+```
 
 ## Acknowledgments
 This code borrows heavily from [BigGAN-PyTorch](https://github.com/ajbrock/BigGAN-PyTorch) and [pytorch-fid](https://github.com/mseitzer/pytorch-fid).
